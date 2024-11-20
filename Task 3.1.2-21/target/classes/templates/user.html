@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UserPage</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Имя</th>
+        <th>Возраст</th>
+        <th>Эл.почта</th>
+        <th>Права доступа</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <ul>
+                <li th:each="role : ${user.roles}">
+                    <span th:text="${role.getRoleName()}"></span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<form th:action="@{/logout}" th:method="POST" target="_self">
+    <button>Выход</button>
+</form>
+
+</body>
+</html>
